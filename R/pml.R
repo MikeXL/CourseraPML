@@ -19,6 +19,19 @@ train <- pml_train[trainIndex, ]
 validate <- pml_train[-trainIndex, ]
 
 #
+# variable selection
+# build KNN model
+#
+fit <- knn(train, validate, train$classe, k=5)
+#
+# x validation aka confusion matrix
+#
+table(predict(fit, validation)$pred, validation$classe)
+
+#
+# other algo to try, svm, decision tree, random forest, naive bayes classifier
+#
+
 #
 #
 #
