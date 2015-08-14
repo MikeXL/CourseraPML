@@ -47,6 +47,8 @@ also explored naive bayes classifier, decision tree and random forest. the simpl
 fit <- randomForest(classe~features, data=train)
 ```
 
+##Analysis 
+[Compiled HTML file][5]
 
 
 🖖
@@ -57,5 +59,5 @@ fit <- randomForest(classe~features, data=train)
 [2]: http://groupware.les.inf.puc-rio.br/har
 [3]: https://class.coursera.org/predmachlearn-031/human_grading/view/courses/975200/assessments/4/submissions/36
 [4]: https://github.com/MikeXL/CourseraPML 
-
+[5]: http://mikexl.github.io/CourseraPML/html "HTML Analysis file"
 
