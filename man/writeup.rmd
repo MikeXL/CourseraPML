@@ -11,7 +11,7 @@ Sometime you may wonder the simplest solution is the most efficient way to get y
 
 So now, after the lucky run, the over 90% accuracy doesn’t look too bad. Submit the result, it does score well.
 
-Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algo, and would like to try out other algo to see who performs better for this particular data set. rpart tree is next one list, so does random forest.
+Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algo, and would like to try out other algo to see who performs better for this particular data set. Regression tree is next one list, so does random forest and naive bayes.
 
 ```
 pml_train <- read.csv(url("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"))
@@ -58,8 +58,7 @@ also explored naive bayes classifier, decision tree and random forest. the simpl
 fit <- randomForest(classe~features, data=train)
 ```
 
-##Analysis
-[Compiled HTML file][5]
+
 
 
 🖖
