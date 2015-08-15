@@ -3,9 +3,9 @@ Coursera Practical Machine Learning
 
 [Rmd file][4]  
 [Compiled HTML file][5]  
-Courtesy to the [dataset publisher][6]
+[dataset][6]
 
-Thanks for visiting, any feedback appreciated!
+Thanks for your visiting, any feedback appreciated!
 
 
 🖖
