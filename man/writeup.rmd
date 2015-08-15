@@ -51,11 +51,21 @@ table(predict(fit, validate)$predict, validate$classe)
 
      
 ##Considerations
-
-also explored naive bayes classifier, decision tree and random forest. the simplest solution above give good enough accuracy.
+Also tried the random forest, from the x validation, the results looks way more encouraging than KNN.
 
 ```
-fit <- randomForest(classe~features, data=train)
+    fit <- randomForest(classe~features, data=train, importance=T)
+```
+
+```
+   OOB estimate of  error rate: 0.61%
+Confusion matrix:
+     A    B    C    D    E  class.error
+A 3904    2    0    0    0 0.0005120328
+B   18 2633    7    0    0 0.0094055681
+C    0   16 2377    3    0 0.0079298831
+D    0    0   25 2225    2 0.0119893428
+E    0    1    4    6 2514 0.0043564356
 ```
 
 
