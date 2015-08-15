@@ -4,35 +4,33 @@ author: "M. Liu"
 date: "August 13, 2015"
 output: html_document
 ---
-Coursera Practical Machine Learning 
+Coursera Practical Machine Learning
 ===
 
 ##Introduction
 
+Sometime you may wonder the simplest solution is the most efficient way to get you started. In this case, it is K Neareast Neighbour (KNN). Now we have an algo to run, can we run it for all features? Sure, why not? Yet the story does not end here, as the 160 features would easily choke any laptop up and not spit any results after hours, hours of huming. Now the intuition (you may call it gut feeling) told me that there is a thing called feature selection (dimesion reduction or variable selection). And that same voice told me that the {x, y, z} of the accelerameters and magnet are the first batch to go. You could go the other way to drop variables batch by batch either by luck or use svm to determine the importancy.
+
+So now, after the lucky run, the over 90% accuracy doesn’t look too bad. Submit the result, it does score well.
+
+Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algo, and would like to try out other algo to see who performs better for this particular data set. rpart tree is next one list, so does random forest.
 
 ```
 pml_train <- read.csv(url("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"))
 pml_testing <- read.csv(url("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"))
-trainIndex <- createDataPartition(pml_train$classe, p=.7, list=F)
-train <- pml_train[trainIndex, ]
+# split the dataset into training and Validation
+# the testing dataset is actually for prediction
+trainIndex <- createDataPartition(..., p=.7)
+train    <- pml_train[trainIndex, ]
 validate <- pml_train[-trainIndex, ]
+new.data <- pml_testing
 ```
 
 
 ##Variable selection and Model building
 
 ```
-features <- c(roll_belt, pitch_belt, yaw_belt,
-                  accel_belt_x, accel_belt_y, accel_belt_z,
-                  magnet_belt_x, magnet_belt_y, magnet_belt_z,
-                  accel_arm_x, accel_arm_y, accel_arm_z,
-                  magnet_arm_x, magnet_arm_y, magnet_arm_z,
-                  accel_dumbbell_x, accel_dumbbell_y, accel_dumbbell_z,
-                  magnet_dumbbell_x, magnet_dumbbell_y, magnet_dumbbell_z,
-                  accel_forearm_x, accel_forearm_y, accel_forearm_z,
-                  magnet_forearm_x, magnet_forearm_y, magnet_forearm_z
-)
-
+features <- c(...)
 fit <- knn(train[features], validate[features], train$classe, data=train)
 ```
 
@@ -45,6 +43,15 @@ out sample error = .341
 table(predict(fit, validate)$predict, validate$classe)
 ```
 
+    pred      --------- classe -----------
+    \|/       A     B      C      D      E
+     A    1,386    16      0      0      0
+     B        6   874     13      0      4
+     C        1    16    818     20      8
+     D        4     2     14    775     12
+     E        0     2      6      2    926
+
+     
 ##Considerations
 
 also explored naive bayes classifier, decision tree and random forest. the simplest solution above give good enough accuracy.
@@ -53,7 +60,7 @@ also explored naive bayes classifier, decision tree and random forest. the simpl
 fit <- randomForest(classe~features, data=train)
 ```
 
-##Analysis 
+##Analysis
 [Compiled HTML file][5]
 
 
@@ -64,6 +71,5 @@ fit <- randomForest(classe~features, data=train)
 [1]: http://mikexl.github.io/machine-learning/coursera-pml.html
 [2]: http://groupware.les.inf.puc-rio.br/har
 [3]: https://class.coursera.org/predmachlearn-031/human_grading/view/courses/975200/assessments/4/submissions/36
-[4]: https://github.com/MikeXL/CourseraPML 
+[4]: https://github.com/MikeXL/CourseraPML
 [5]: http://mikexl.github.io/CourseraPML/html "HTML Analysis file"
-
