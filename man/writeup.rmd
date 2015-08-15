@@ -1,7 +1,7 @@
 ---
 title: "Coursera PML Writeup"
 author: "M. Liu"
-date: "August 13, 2015"
+date: "August 14, 2015"
 output: html_document
 ---
 Coursera Practical Machine Learning
@@ -27,7 +27,7 @@ new.data <- pml_testing
 ```
 
 
-##Variable selection and Model building
+##Feature selection and Model building
 
 ```
 features <- c(...)
