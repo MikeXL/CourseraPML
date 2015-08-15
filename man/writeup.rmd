@@ -4,6 +4,7 @@ author: "M. Liu"
 date: "August 14, 2015"
 output: html_document
 ---
+Disclaimer: as I am not sure about the conduct of publishing actual executable code, pseudo code are used in below for readability. 
 
 ##Introduction
 
