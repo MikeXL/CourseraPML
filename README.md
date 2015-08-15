@@ -1,7 +1,7 @@
 Coursera Practical Machine Learning 
 ===
 
-[Rmd file][4]
+[Rmd file][4]  
 [Compiled HTML file][5]
 
 
