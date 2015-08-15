@@ -4,8 +4,6 @@ author: "M. Liu"
 date: "August 14, 2015"
 output: html_document
 ---
-Coursera Practical Machine Learning
-===
 
 ##Introduction
 
