@@ -4,7 +4,6 @@ author: "M. Liu"
 date: "August 14, 2015"
 output: html_document
 ---
-Disclaimer: as I am not sure about the conduct of publishing actual executable code, pseudo code are used in below for readability. 
 
 ##Introduction
 
@@ -29,7 +28,42 @@ new.data <- pml_testing
 ##Feature selection and Model building
 
 ```
-features <- c(...)
+features <- c(roll_belt,
+			pitch_belt,
+			yaw_belt,
+			accel_belt_x,
+			accel_belt_y,
+			accel_belt_z,
+			magnet_belt_x,
+			magnet_belt_y,
+			magnet_belt_z,
+			roll_arm,
+			pitch_arm,
+			yaw_arm,
+			accel_arm_x,
+			accel_arm_y,
+			accel_arm_z,
+			magnet_arm_x,
+			magnet_arm_y,
+			magnet_arm_z,
+			roll_dumbbell,
+			pitch_dumbbell,
+			yaw_dumbbell,
+			accel_dumbbell_x,
+			accel_dumbbell_y,
+			accel_dumbbell_z,
+			magnet_dumbbell_x,
+			magnet_dumbbell_y,
+			magnet_dumbbell_z,
+			roll_forearm,
+			pitch_forearm,
+			yaw_forearm,
+			accel_forearm_x,
+			accel_forearm_y,
+			accel_forearm_z,
+			magnet_forearm_x,
+			magnet_forearm_y,
+			magnet_forearm_z)
 fit <- knn(train[features], validate[features], train$classe, data=train)
 ```
 
@@ -55,10 +89,11 @@ out sample error = .341
 Also tried the random forest, from the x validation, the results looks way more encouraging than KNN.
 
 ```
-    fit <- randomForest(classe~features, data=train, importance=T)
+    #fit.tree   <- rpart(classe~features, data=train, importance=T)
+    fit.forest <- randomForest(classe~features, data=train, importance=T)
 ```
 
-For this training set, 
+For the training set, 
 ```
    OOB estimate of  error rate: 0.61%
 Confusion matrix:

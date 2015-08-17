@@ -68,7 +68,6 @@ img {
 </div>
 
 
-<p>Disclaimer: as I am not sure about the conduct of publishing actual executable code, pseudo code are used in below for readability.</p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>Sometime you may wonder the simplest solution is the most efficient way to get you started. In this case, it is K Neareast Neighbour (KNN). Now we have an algo to run, can we run it for all features? Sure, why not? Yet the story does not end here, as the 160 features would easily choke any laptop up and not spit any results after hours, hours of huming. Now the intuition (you may call it gut feeling) told me that there is a thing called feature selection (dimesion reduction or variable selection). And that same voice told me that the {x, y, z} of the accelerameters and magnet are the first batch to go. You could go the other way to drop variables batch by batch either by luck or use svm to determine the importancy.</p>
@@ -85,7 +84,42 @@ new.data &lt;- pml_testing</code></pre>
 </div>
 <div id="feature-selection-and-model-building" class="section level2">
 <h2>Feature selection and Model building</h2>
-<pre><code>features &lt;- c(...)
+<pre><code>features &lt;- c(roll_belt,
+            pitch_belt,
+            yaw_belt,
+            accel_belt_x,
+            accel_belt_y,
+            accel_belt_z,
+            magnet_belt_x,
+            magnet_belt_y,
+            magnet_belt_z,
+            roll_arm,
+            pitch_arm,
+            yaw_arm,
+            accel_arm_x,
+            accel_arm_y,
+            accel_arm_z,
+            magnet_arm_x,
+            magnet_arm_y,
+            magnet_arm_z,
+            roll_dumbbell,
+            pitch_dumbbell,
+            yaw_dumbbell,
+            accel_dumbbell_x,
+            accel_dumbbell_y,
+            accel_dumbbell_z,
+            magnet_dumbbell_x,
+            magnet_dumbbell_y,
+            magnet_dumbbell_z,
+            roll_forearm,
+            pitch_forearm,
+            yaw_forearm,
+            accel_forearm_x,
+            accel_forearm_y,
+            accel_forearm_z,
+            magnet_forearm_x,
+            magnet_forearm_y,
+            magnet_forearm_z)
 fit &lt;- knn(train[features], validate[features], train$classe, data=train)</code></pre>
 </div>
 <div id="validation" class="section level2">
@@ -103,8 +137,9 @@ fit &lt;- knn(train[features], validate[features], train$classe, data=train)</co
 <div id="considerations" class="section level2">
 <h2>Considerations</h2>
 <p>Also tried the random forest, from the x validation, the results looks way more encouraging than KNN.</p>
-<pre><code>    fit &lt;- randomForest(classe~features, data=train, importance=T)</code></pre>
-<p>For this training set,</p>
+<pre><code>    #fit.tree   &lt;- rpart(classe~features, data=train, importance=T)
+    fit.forest &lt;- randomForest(classe~features, data=train, importance=T)</code></pre>
+<p>For the training set,</p>
 <pre><code>   OOB estimate of  error rate: 0.61%
 Confusion matrix:
      A    B    C    D    E  class.error
