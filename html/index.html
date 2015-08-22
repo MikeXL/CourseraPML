@@ -53,9 +53,9 @@ code {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.04);
 }
-img { 
-  max-width:100%; 
-  height: auto; 
+img {
+  max-width:100%;
+  height: auto;
 }
 </style>
 <div class="container-fluid main-container">
@@ -71,8 +71,8 @@ img {
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>Sometime you may wonder the simplest solution is the most efficient way to get you started. In this case, it is K Neareast Neighbour (KNN). Now we have an algo to run, can we run it for all features? Sure, why not? Yet the story does not end here, as the 160 features would easily choke any laptop up and not spit any results after hours, hours of huming. Now the intuition (you may call it gut feeling) told me that there is a thing called feature selection (dimesion reduction or variable selection). And that same voice told me that the {x, y, z} of the accelerameters and magnet are the first batch to go. You could go the other way to drop variables batch by batch either by luck or use svm to determine the importancy.</p>
-<p>So now, after the lucky run, the over 90% accuracy doesn’t look too bad. Submit the result, it does score well.</p>
-<p>Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algo, and would like to try out other algo to see who performs better for this particular data set. Regression tree is next one list, so does random forest and naive bayes.</p>
+<p>So now, after the lucky run, the ~ 96% accuracy doesn’t look too bad. Submit the result, it does score well.</p>
+<p>Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algorithms. The next one on the list is random forest, and see who performs better for this particular data set. Regression tree is another one on the list, so does naive bayes.</p>
 <pre><code>pml_train &lt;- read.csv(url(&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv&quot;))
 pml_testing &lt;- read.csv(url(&quot;https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv&quot;))
 # split the dataset into training and Validation
@@ -136,7 +136,8 @@ fit &lt;- knn(train[features], validate[features], train$classe, data=train)</co
 </div>
 <div id="considerations" class="section level2">
 <h2>Considerations</h2>
-<p>Also tried the random forest, from the x validation, the results looks way more encouraging than KNN.</p>
+<p>With limited time, only able to try out regression tree and random forest. From the confusion matrix shown below, the results look way more encouraging than KNN.
+</p>
 <pre><code>    #fit.tree   &lt;- rpart(classe~features, data=train, importance=T)
     fit.forest &lt;- randomForest(classe~features, data=train, importance=T)</code></pre>
 <p>For the training set,</p>

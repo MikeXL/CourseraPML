@@ -9,9 +9,9 @@ output: html_document
 
 Sometime you may wonder the simplest solution is the most efficient way to get you started. In this case, it is K Neareast Neighbour (KNN). Now we have an algo to run, can we run it for all features? Sure, why not? Yet the story does not end here, as the 160 features would easily choke any laptop up and not spit any results after hours, hours of huming. Now the intuition (you may call it gut feeling) told me that there is a thing called feature selection (dimesion reduction or variable selection). And that same voice told me that the {x, y, z} of the accelerameters and magnet are the first batch to go. You could go the other way to drop variables batch by batch either by luck or use svm to determine the importancy.
 
-So now, after the lucky run, the over 90% accuracy doesn’t look too bad. Submit the result, it does score well.
+So now, after the lucky run, the ~ 96% accuracy doesn’t look too bad. Submit the result, it does score well.
 
-Does story end here now? Nop. As we are scientist, we study and research. KNN is one of the many classification algo, and would like to try out other algo to see who performs better for this particular data set. Regression tree is next one list, so does random forest and naive bayes.
+Does story end here now? Of course not. As we are scientist, we study and research. KNN is one of the many classification algorithms. The next one on the list is random forest, and see who performs better for this particular data set. Regression tree is another one on the list, so does naive bayes.
 
 ```
 pml_train <- read.csv(url("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"))
@@ -69,8 +69,8 @@ fit <- knn(train[features], validate[features], train$classe, data=train)
 
 
 ##Validation
-in sample error = .329
-out sample error = .341
+in sample error = .329  
+out sample error = .341  
 
 ```
     table(predict(fit, validate), validate$classe)
@@ -84,16 +84,16 @@ out sample error = .341
      D        4     2     14    775     12
      E        0     2      6      2    926
 
-     
+
 ##Considerations
-Also tried the random forest, from the x validation, the results looks way more encouraging than KNN.
+With limited time, only able to try out regression tree and random forest. From the confusion matrix shown below, the results look way more encouraging than KNN.
 
 ```
     #fit.tree   <- rpart(classe~features, data=train, importance=T)
     fit.forest <- randomForest(classe~features, data=train, importance=T)
 ```
 
-For the training set, 
+For the training set,
 ```
    OOB estimate of  error rate: 0.61%
 Confusion matrix:
